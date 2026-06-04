@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>A Fruitful Academic Year – Hayder Nasser</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── CSS Variables ── */
+    :root {
+      --bg:        #f7f4ee;
+      --surface:   #ffffff;
+      --ink:       #1c1a17;
+      --muted:     #6b6560;
+      --accent:    #c8522a;
+      --accent2:   #2a6ec8;
+      --border:    #e0dbd2;
+      --radius:    10px;
+      --max-w:     780px;
+      --nav-h:     60px;
+    }
+
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 244, 238, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+    }
+
+    .nav-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.6rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── Page Wrapper ── */
+    .page {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+
+    /* ── Hero Header ── */
+    .hero {
+      text-align: center;
+      padding: 3.5rem 0 2.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: #f5e9e3;
+      border: 1px solid #e8c9bc;
+      border-radius: 50px;
+      padding: 0.25rem 0.85rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    .hero-meta span { margin: 0 0.5rem; opacity: 0.4; }
+
+    /* ── Section Headings ── */
+    section { margin-bottom: 3rem; }
+
+    section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+
+    section p { margin-bottom: 1rem; color: #2f2d29; }
+
+    /* ── Pull Quote ── */
+    blockquote {
+      border-left: 4px solid var(--accent);
+      margin: 1.8rem 0;
+      padding: 0.8rem 1.4rem;
+      background: #fdf6f2;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    /* ── ELEMENT 1: Unordered List – Hobbies & Interests ── */
+    .interests-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .interests-list li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.7rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.92rem;
+      font-weight: 400;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .interests-list li:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .interests-list .icon {
+      font-size: 1.3rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    /* ── ELEMENT 2: Activity Cards (visual list) ── */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .activity-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .activity-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+      transform: translateY(-3px);
+    }
+
+    .activity-card .card-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+
+    .activity-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--accent);
+    }
+
+    .activity-card p { font-size: 0.85rem; color: var(--muted); margin: 0; }
+
+    /* ── ELEMENT 3: Table – Year in Review ── */
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 1rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      background: var(--surface);
+    }
+
+    thead {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    thead th {
+      padding: 0.85rem 1.1rem;
+      text-align: left;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+    }
+
+    tbody tr { border-bottom: 1px solid var(--border); }
+    tbody tr:last-child { border-bottom: none; }
+
+    tbody tr:hover { background: #fdf6f2; }
+
+    tbody td {
+      padding: 0.8rem 1.1rem;
+      vertical-align: top;
+      color: #2f2d29;
+    }
+
+    tbody td:first-child { font-weight: 500; color: var(--accent); }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.55rem;
+      border-radius: 50px;
+    }
+
+    .badge-green  { background: #e6f4ec; color: #2a7a4b; }
+    .badge-blue   { background: #e6eef9; color: #1f57a8; }
+    .badge-orange { background: #fdeee7; color: #b94a1e; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem 0 0;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer strong { color: var(--accent); }
+
+    /* ── Responsive ── */
+    @media (max-width: 540px) {
+      .interests-list { grid-template-columns: 1fr; }
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 0.9rem; }
+      .nav-links a { font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav>
+    <a class="nav-brand" href="#top">Hayder Nasser</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#activities">Activities</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#summary">Summary</a></li>
+    </ul>
+  </nav>
+
+  <div class="page" id="top">
+
+    <!-- ── Hero ── -->
+    <header class="hero">
+      <div class="hero-tag">Academic Reflection · Grade 11</div>
+      <h1>A Fruitful and Memorable<br><em>Academic Year</em></h1>
+      <p class="hero-meta">
+        Hayder Nasser
+        <span>|</span>
+        Ethiopian International School Riyadh
+        <span>|</span>
+        2024 – 2025
+      </p>
+    </header>
+
+    <!-- ── About Me ── -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        My name is Hayder Nasser, and I am a Grade 11 student at Ethiopian International School Riyadh.
+        Throughout this academic year, I experienced many important moments that helped shape my personality,
+        improve my skills, and expand my knowledge in different areas. This year was not only about studying
+        school subjects and preparing for exams — it was also a year filled with experiences, challenges,
+        creativity, participation, and self-development.
+      </p>
+
+      <blockquote>
+        "Looking back, I can confidently say that this year was one of the most fruitful and memorable years of my life so far."
+      </blockquote>
+
+      <!-- ELEMENT 1: Unordered List -->
+      <h3 style="margin: 1.4rem 0 0.5rem; font-family:'Playfair Display',serif; font-size:1.05rem;">My Hobbies &amp; Interests</h3>
+      <ul class="interests-list">
+        <li><span class="icon">🎨</span> Drawing &amp; Visual Art</li>
+        <li><span class="icon">💪</span> Fitness &amp; Working Out</li>
+        <li><span class="icon">🎬</span> Movies &amp; Storytelling</li>
+        <li><span class="icon">📸</span> Photography &amp; Videography</li>
+        <li><span class="icon">💻</span> Programming (Python)</li>
+        <li><span class="icon">🌐</span> Web Design (HTML &amp; CSS)</li>
+      </ul>
+    </section>
+
+    <!-- ── School Activities ── -->
+    <section id="activities">
+      <h2>School Activities</h2>
+      <p>
+        This academic year was especially meaningful because I participated in many school events.
+        Before this year, I was not someone who participated actively. However, after joining one event,
+        I discovered that participation builds confidence, creates friendships, and teaches valuable life lessons.
+      </p>
+
+      <!-- ELEMENT 2: Activity Cards -->
+      <div class="activities-grid">
+        <div class="activity-card">
+          <div class="card-icon">🌍</div>
+          <h3>Culture's Day</h3>
+          <p>Represented Sudanese culture — sharing traditions, food, and clothing with the school community.</p>
+        </div>
+        <div class="activity-card">
+          <div class="card-icon">🎤</div>
+          <h3>Public Speech</h3>
+          <p>Challenged my fear of public speaking and reached the final round of the competition.</p>
+        </div>
+        <div class="activity-card">
+          <div class="card-icon">🖐️</div>
+          <h3>Club's Day Project</h3>
+          <p>Built a Python app using computer vision that lets users draw in the air with hand movements.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Skills Learned ── -->
+    <section id="skills">
+      <h2>Skills Learned</h2>
+      <p>
+        One of the most exciting new subjects this year was <strong>Web Design</strong>. I learned how computers
+        function internally, and how websites are built layer by layer using HTML and CSS — combining logic
+        with creativity to design real web pages.
+      </p>
+      <p>
+        In programming, I explored Python and computer vision, creating an interactive air-drawing project.
+        Though the presentation hit a technical snag, the process of building it taught me persistence,
+        debugging, and problem-solving.
+      </p>
+    </section>
+
+    <!-- ── Summary Table ── -->
+    <section id="summary">
+      <h2>Year in Review</h2>
+      <p>A quick look at each major experience, the skills gained, and how it contributed to my growth.</p>
+
+      <!-- ELEMENT 3: Table -->
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Experience</th>
+              <th>Key Skills Gained</th>
+              <th>Outcome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Culture's Day</td>
+              <td>Teamwork, Communication, Cultural Awareness</td>
+              <td><span class="badge badge-green">✓ Success</span></td>
+            </tr>
+            <tr>
+              <td>Public Speech Competition</td>
+              <td>Confidence, Clarity, Leadership</td>
+              <td><span class="badge badge-blue">Finalist</span></td>
+            </tr>
+            <tr>
+              <td>Club's Day (Python Project)</td>
+              <td>Programming, Problem-solving, Creativity</td>
+              <td><span class="badge badge-orange">Tech Issue – Learned</span></td>
+            </tr>
+            <tr>
+              <td>Web Design Subject</td>
+              <td>HTML, CSS, UI Thinking</td>
+              <td><span class="badge badge-green">✓ New Skill</span></td>
+            </tr>
+            <tr>
+              <td>Drawing &amp; Art</td>
+              <td>Creativity, Focus, Self-expression</td>
+              <td><span class="badge badge-green">✓ Ongoing</span></td>
+            </tr>
+            <tr>
+              <td>Fitness &amp; Wellbeing</td>
+              <td>Discipline, Consistency, Health</td>
+              <td><span class="badge badge-blue">Returning Soon</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <blockquote style="margin-top:2rem;">
+        "Personal growth happens when a person steps outside their comfort zone. Every activity taught me something valuable — confidence, teamwork, leadership, creativity, or problem-solving."
+      </blockquote>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer>
+      <p>Written by <strong>Hayder Nasser</strong> · Grade 11 · Ethiopian International School Riyadh · 2024–2025</p>
+    </footer>
+
+  </div><!-- /page -->
+</body>
+</html>
